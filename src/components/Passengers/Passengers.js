@@ -4,15 +4,42 @@ import React, { Component } from 'react';
 // INPUT SHOULD COLLECT INFO, BUTTON SHOULD ADD THEM TO THE LIST
 
 class Passengers extends Component {
+  state = { 
+    passengers: ''
+  }
+
+  componentDidMount(){
+    console.log('CDM passengers');
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      passengers: event.target.value
+    })
+  }
+
+  handleClick = () => {
+    if (this.state.passenger === '') {
+      //alert(`please enter passenger name`);
+      return;
+    }
+    else {
+      this.props.dispatch({
+        type: 'passengers', payload: this.state
+      });
+      this.props.history.push('/Dashboard');
+    }
+  }
+
   render() {
     return (
       <div>
         <h2>Passengers</h2>
 
-        <input type="text" name="name" placeholder="Enter Name" />
-        <button>Add Passenger</button>
+        <input type="text" name="name" placeholder="Enter Name" onChange={this.handleChange} />
+        <button onClick={this.handleClick}>Add Passenger</button>
 
-        <ul>PASSENGER LIST: GOES HERE</ul>
+        <ul>Passengers: {this.props.reduxState.passengers}</ul>
       
       </div>
     )

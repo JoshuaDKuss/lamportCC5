@@ -11,6 +11,10 @@ import Dashboard from '../Dashboard/Dashboard';
 
 
 class App extends Component {
+
+  componentDidMount(){
+    console.log('CDM');
+  }
   render() {
     return (
       <Router>
@@ -40,4 +44,8 @@ class App extends Component {
   }
 }
 
-export default App;
+//export default App;
+
+const stateOnProps = (reduxState) => ({ reduxState });
+
+export default connect(stateOnProps)(App);

@@ -7,7 +7,30 @@ import { Provider } from 'react-redux';
 
 // put your reducer here!
 
-// use reducer in store
-const storeInstance = createStore(  );
+const reducerInitialState = {
+    dashboard: {
+        speed: '',
+        passengers: ''
+    }
+}
 
-ReactDOM.render(<Provider store={storeInstance}><App /></Provider>, document.getElementById('root'));
+const myReducer = (state = reducerInitialState, action) => {
+    console.log('in myReducer:', action);
+    if(action.type === 'speed'){
+        speed = action.payload.speed;
+        return{...state, speed: speed};
+    }
+    if(action.type === 'passengers'){
+        passengers = action.payload.passengers;
+        return{...state, passengers: passengers};
+    }
+    return state;
+}
+
+    
+
+// use reducer in store
+const storeInstance = createStore(myReducer);
+
+ReactDOM.render(
+    <Provider store={storeInstance}><App /></Provider>, document.getElementById('root'));
