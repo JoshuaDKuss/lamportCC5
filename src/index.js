@@ -6,22 +6,28 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux';
 
 // put your reducer here!
+let speed = '';
+let passengers;
 
-const reducerInitialState = {
-    dashboard: {
-        speed: '',
-        passengers: ''
-    }
-}
+// const reducerInitialState = {
+//     dashboard: {
+//         speed: '',
+//         passengers: ''
+//     }
+// }
 
-const myReducer = (state = reducerInitialState, action) => {
+const myReducer = (state = { speed: 0, passengers }, action) => {
     console.log('in myReducer:', action);
-    if(action.type === 'speed'){
+    if(action.type === 'speedUp'){
         speed = action.payload.speed;
-        return{...state, speed: speed};
+        return{...state, speed: Number(state.speed) +1};
+    }
+    if(action.type === 'speedDown'){
+        speed = action.payload.speed;
+        return{...state, speed: Number(state.speed) -1};
     }
     if(action.type === 'passengers'){
-        passengers = action.payload.passengers;
+        passengers.push(action.payload);
         return{...state, passengers: passengers};
     }
     return state;
@@ -32,5 +38,4 @@ const myReducer = (state = reducerInitialState, action) => {
 // use reducer in store
 const storeInstance = createStore(myReducer);
 
-ReactDOM.render(
-    <Provider store={storeInstance}><App /></Provider>, document.getElementById('root'));
+ReactDOM.render(<Provider store={storeInstance}><App /></Provider>, document.getElementById('root'));

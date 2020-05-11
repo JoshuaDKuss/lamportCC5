@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import reduxLogo from './redux.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 // components
 import SpeedControl from '../SpeedControl/SpeedControl';
@@ -12,9 +13,10 @@ import Dashboard from '../Dashboard/Dashboard';
 
 class App extends Component {
 
-  componentDidMount(){
-    console.log('CDM');
-  }
+  // componentDidMount(){
+  //   console.log('CDM app');
+  // }
+
   render() {
     return (
       <Router>

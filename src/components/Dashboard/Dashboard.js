@@ -6,9 +6,10 @@ import {connect} from 'react-redux';
 // YOU SHOULD DISPLAY THE COUNT OF PEOPLE CURRENTLY ON BOARD
 
 class Dashboard extends Component {
-  componentDidMount(){
-    console.log('CDM dash');
-  }
+
+  // componentDidMount(){
+  //   console.log('CDM dash');
+  // }
 
   render() {
     return (
@@ -16,7 +17,7 @@ class Dashboard extends Component {
         <h2>Dashboard</h2>
         
         <p>SPEED: {this.props.reduxState.speed}</p>
-        <p>PASSENGER COUNT: {this.props.reduxState.passengers}</p>
+        <p>PASSENGER COUNT: {this.props.reduxState.passengers.length}</p>
       </div>
     )
   }

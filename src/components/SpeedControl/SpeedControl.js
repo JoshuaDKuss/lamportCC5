@@ -1,46 +1,48 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 // THIS COMPONENT IS OUR INTERFACE FOR SPEED
 // YOU SHOULD DISPLAY THE CURRENT SPEED
 // BUTTONS SHOULD INCREASE OR DECREASE SPEED, RESPECTIVELY
 
 class SpeedControl extends Component {
-  state = { 
-    speed: ''
+  // state = { 
+  //   speed: ''
+  // }
+
+  // componentDidMount(){
+  //   console.log('CDM speedcontrol');
+  // }
+
+  // handleChange = (event) => {
+  //   this.setState({
+  //     speed: event.target.value
+  //   })
+  // }
+
+  handleClickUp = () => {
+    console.log('speed up');
+    this.props.dispatch({ type: 'speedUp', payload: 1 })
   }
 
-  componentDidMount(){
-    console.log('CDM speedcontrol');
+  handleClickDown = () => {
+    console.log('speed down');
+    this.props.dispatch({ type: 'speedDown', payload: 1 })
   }
-
-  handleChange = (event) => {
-    this.setState({
-      speed: event.target.value
-    })
-  }
-
-  handleClick = () => {
-    if (this.state.speed === '') {
-      alert(`please enter speed`);
-      return;
-    }
-    else {
-      this.props.dispatch({
-        type: 'speed', payload: this.state
-      });
-      this.props.history.push('/Passengers');
-    }
-  }
+    
+  
   render() {
     return (
       <div>
         <h2>Speed Control</h2>
 
-        <button option="number">Increase Speed</button>
-        <p>SPEED: GOES HERE</p>
-        <button input="number">Decrease Speed</button>
+        <button onClick={this.handleClickUp}>Increase Speed</button>
+        <p>Speed: {this.props.reduxState}</p>
+        <button onClick={this.handleClickDown}>Decrease Speed</button>
       </div>
     )
   }
 }
 
-export default SpeedControl;
+const stateOnProps = (reduxState) => ({ reduxState });
+
+export default connect(stateOnProps)(SpeedControl);
