@@ -36,7 +36,7 @@ class SpeedControl extends Component {
         <h2>Speed Control</h2>
 
         <button onClick={this.handleClickUp}>Increase Speed</button>
-        <p>Speed: {this.props.reduxState}</p>
+        <p>Speed: {this.props.reduxState.speed}</p>
         <button onClick={this.handleClickDown}>Decrease Speed</button>
       </div>
     )
