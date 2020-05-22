@@ -19,20 +19,18 @@ let passengers;
 const myReducer = (state = { speed: 0, passengers }, action) => {
     console.log('in myReducer:', action);
     if(action.type === 'speedUp'){
-        speed = action.payload.speed;
-        return{...state, speed: Number(state.speed) +1};
+        state = {...state, speed: Number(state.speed) +1};
     }
     if(action.type === 'speedDown'){
-        speed = action.payload.speed;
-        return{...state, speed: Number(state.speed) -1};
+        state = {...state, speed: Number(state.speed) -1};
     }
     if(action.type === 'passengers'){
-        passengers.push(action.payload);
-        return{...state, passengers: passengers};
+        state={...state,
+        passengers: [...state.passengers, action.payload]
+        }
     }
     return state;
 }
-
     
 
 // use reducer in store
