@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-// THIS COMPONENT IS OUR INTERFACE FOR SPEED
-// YOU SHOULD DISPLAY THE CURRENT SPEED
-// BUTTONS SHOULD INCREASE OR DECREASE SPEED, RESPECTIVELY
+// THIS COMPONENT IS OUR INTERFACE FOR SPEED  // YOU SHOULD DISPLAY THE CURRENT SPEED  // BUTTONS SHOULD INCREASE OR DECREASE SPEED, RESPECTIVELY
 
 class SpeedControl extends Component {
   // state = { 
@@ -27,8 +25,7 @@ class SpeedControl extends Component {
   handleClickDown = () => {
     console.log('speed down');
     this.props.dispatch({ type: 'speedDown', payload: 1 })
-  }
-    
+  }   
   
   render() {
     return (
