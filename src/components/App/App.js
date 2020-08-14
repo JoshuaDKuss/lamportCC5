@@ -4,7 +4,6 @@ import reduxLogo from './redux.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 // components
 import SpeedControl from '../SpeedControl/SpeedControl';
 import Passengers from '../Passengers/Passengers';
@@ -46,8 +45,6 @@ class App extends Component {
     );
   }
 }
-
-//export default App;
 
 const stateOnProps = (reduxState) => ({ reduxState });
 
