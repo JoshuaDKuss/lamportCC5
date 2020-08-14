@@ -32,7 +32,6 @@ const myReducer = (state = { speed: 0, passengers }, action) => {
     return state;
 }
     
-
 // use reducer in store
 const storeInstance = createStore(myReducer);
 
